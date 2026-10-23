@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JianHeShui · 学生开发者</title>
+<meta name="description" content="JianHeShui — 成都工业学院学生开发者。把想法做成能用的东西：校园网工具、开发者工具与数据可视化。">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#05060A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F2F5FA" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JianHeShui · 学生开发者">
+<meta property="og:description" content="把想法做成能用的东西 · Building things that actually work">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237DD3FC'/%3E%3Cstop offset='1' stop-color='%23A78BFA'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2305060A'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='url(%23g)' stroke-width='2.4'/%3E%3C/svg%3E">
+<script>
+  /* 主题预置：在样式表解析前把用户手动选择过的主题挂到 <html> 上，避免刷新时闪一下。
+     这段只读 localStorage，不渲染任何内容；JS 不可用时页面完全依赖 prefers-color-scheme。 */
+  (function () {
+    var d = document.documentElement;
+    d.className += ' js';
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') { d.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 背景：深色渐变之上几团极慢漂移的彩色光斑（纯 CSS，无 JS、无图片） -->
+<div class="aurora" aria-hidden="true">
+  <span class="blob blob--a"></span>
+  <span class="blob blob--b"></span>
+  <span class="blob blob--c"></span>
+  <span class="blob blob--d"></span>
+</div>
+
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top">JianHeShui</a>
+    <nav class="nav__links" aria-label="页面导航">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅主题" title="切换深浅主题">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"></path>
+        </svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.4 14.2A8.6 8.6 0 0 1 9.8 3.6a8.6 8.6 0 1 0 10.6 10.6Z"></path>
+        </svg>
+      </button>
+      <a class="btn btn--glass btn--sm" href="https://github.com/JianHeShui" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <p class="eyebrow hero__eyebrow">成都工业学院 · 学生开发者</p>
+    <h1 class="hero__name" id="hero-title" lang="en">JianHeShui</h1>
+    <p class="hero__tagline">把想法做成能用的东西</p>
+    <p class="hero__tagline-en" lang="en">Building things that actually work</p>
+    <p class="status" lang="en">
+      <span class="status__dot" aria-hidden="true"></span>
+      <span>Available for collaboration</span>
+      <span class="status__sep" aria-hidden="true">·</span>
+      <span>Chengdu, China</span>
+    </p>
+    <div class="hero__ctas">
+      <a class="btn btn--primary" href="#work">View work</a>
+      <a class="btn btn--ghost" href="mailto:318305628+JianHeShui@users.noreply.github.com">Get in touch</a>
+    </div>
+  </section>
+
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <div class="section__head-text">
+          <p class="eyebrow">Selected work</p>
+          <h2 class="section__title" id="work-title">精选项目</h2>
+          <p class="section__desc">四个已经能用的东西，代码都在 GitHub 上。</p>
+        </div>
+        <a class="more-link" href="https://github.com/JianHeShui#readme" target="_blank" rel="noopener noreferrer">在 README 看完整版 <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="projects">
+        <article class="card project" data-reveal>
+          <div class="project__body">
+            <span class="project__num" aria-hidden="true">01</span>
+            <h3 class="project__name" lang="en">campus-auth</h3>
+            <p class="project__desc">校园网认证一键登录，桌面端零配置接入</p>
+          </div>
+          <a class="project__link" href="https://github.com/JianHeShui/campus-auth" target="_blank" rel="noopener noreferrer">
+            <span>查看仓库</span><span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="card project" data-reveal>
+          <div class="project__body">
+            <span class="project__num" aria-hidden="true">02</span>
+            <h3 class="project__name" lang="en">cdtu-campus-network</h3>
+            <p class="project__desc">成都工业学院校园网协议逆向与自动化实现</p>
+          </div>
+          <a class="project__link" href="https://github.com/JianHeShui/cdtu-campus-network" target="_blank" rel="noopener noreferrer">
+            <span>查看仓库</span><span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="card project" data-reveal>
+          <div class="project__body">
+            <span class="project__num" aria-hidden="true">03</span>
+            <h3 class="project__name" lang="en">wechat-stats</h3>
+            <p class="project__desc">微信公众号数据抓取的整理与可视化</p>
+          </div>
+          <a class="project__link" href="https://github.com/JianHeShui/wechat-stats" target="_blank" rel="noopener noreferrer">
+            <span>查看仓库</span><span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="card project" data-reveal>
+          <div class="project__body">
+            <span class="project__num" aria-hidden="true">04</span>
+            <h3 class="project__name" lang="en">deepseek-harness</h3>
+            <p class="project__desc">围绕 DeepSeek Harness 的本地增强与插件实验</p>
+          </div>
+          <a class="project__link" href="https://github.com/JianHeShui/deepseek-harness" target="_blank" rel="noopener noreferrer">
+            <span>查看仓库</span><span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack" aria-labelledby="stack-title">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <div class="section__head-text">
+          <p class="eyebrow">Stack</p>
+          <h2 class="section__title" id="stack-title">技术栈</h2>
+          <p class="section__desc">日常写代码会用到的语言和工具。</p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card stack__group" data-reveal>
+          <h3 class="stack__name" lang="en">Languages</h3>
+          <ul class="chips">
+            <li class="chip" lang="en">TypeScript</li>
+            <li class="chip" lang="en">Python</li>
+            <li class="chip" lang="en">Java</li>
+            <li class="chip" lang="en">C</li>
+          </ul>
+        </div>
+
+        <div class="card stack__group" data-reveal>
+          <h3 class="stack__name" lang="en">Frontend</h3>
+          <ul class="chips">
+            <li class="chip" lang="en">React</li>
+            <li class="chip" lang="en">Vite</li>
+            <li class="chip" lang="en">Tailwind CSS</li>
+          </ul>
+        </div>
+
+        <div class="card stack__group" data-reveal>
+          <h3 class="stack__name" lang="en">Tools</h3>
+          <ul class="chips">
+            <li class="chip" lang="en">Git</li>
+            <li class="chip" lang="en">Docker</li>
+            <li class="chip" lang="en">Linux</li>
+            <li class="chip" lang="en">Neovim</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <div class="section__head-text">
+          <p class="eyebrow">About</p>
+          <h2 class="section__title" id="about-title">关于我</h2>
+        </div>
+      </div>
+
+      <div class="card about__card" data-reveal>
+        <p class="about__lede">我是 JianHeShui，成都工业学院的学生开发者。</p>
+        <p class="about__text">平时写 TypeScript 和 Python 多一些，也写 Java 和 C。比起追新，我更喜欢把身边重复的麻烦写成能跑的小工具——校园网认证、公众号数据整理、开发环境里的小插件，基本都是这么来的。</p>
+        <dl class="facts">
+          <div class="fact">
+            <dt>地点</dt>
+            <dd lang="en">Chengdu, China</dd>
+          </div>
+          <div class="fact">
+            <dt>正在做</dt>
+            <dd lang="en">Campus network tooling &amp; developer tools</dd>
+          </div>
+          <div class="fact">
+            <dt>状态</dt>
+            <dd lang="en">Available for collaboration</dd>
+          </div>
+        </dl>
+        <div class="about__actions">
+          <a class="btn btn--glass" href="https://github.com/JianHeShui" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="mailto:318305628+JianHeShui@users.noreply.github.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <a class="btn btn--glass" href="https://github.com/JianHeShui" target="_blank" rel="noopener noreferrer"><span class="arrow arrow--back" aria-hidden="true">←</span> 返回 GitHub 主页</a>
+    <p class="footer__meta">© <span id="year">2026</span> JianHeShui · 手写 HTML / CSS / JS，零构建、零外部请求</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

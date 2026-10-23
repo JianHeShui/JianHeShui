@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-label="精选项目：campus-auth、cdtu-campus-network、wechat-stats、deepseek-harness">
+  <style>
+    /* ---------- token（暗色为默认，亮色见 media 覆盖） ---------- */
+    :root {
+      --bg-0: #05060A; --bg-1: #0B101C;
+      --glass-fill: rgba(255,255,255,0.055); --glass-fill-2: rgba(255,255,255,0.085);
+      --glass-stroke: rgba(255,255,255,0.16); --glass-hl: rgba(255,255,255,0.55);
+      --ink-0: #F7F9FC; --ink-1: #A8B4C8; --ink-2: #6B7A91;
+      --accent-a: #7DD3FC; --accent-b: #A78BFA; --accent-c: #F0ABFC; --accent-d: #5EEAD4;
+      --glow-op: 0.20;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg-0: #F2F5FA; --bg-1: #FFFFFF;
+        --glass-fill: rgba(255,255,255,0.62); --glass-fill-2: rgba(255,255,255,0.82);
+        --glass-stroke: rgba(15,23,42,0.10); --glass-hl: rgba(255,255,255,0.95);
+        --ink-0: #0B1220; --ink-1: #46536B; --ink-2: #7A879C;
+        --accent-a: #0EA5E9; --accent-b: #8B5CF6; --accent-c: #D946EF; --accent-d: #14B8A6;
+        --glow-op: 0.13;
+      }
+    }
+
+    /* ---------- 文字 / 颜色（颜色只走 class，属性里绝不写 var()） ---------- */
+    text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', Roboto, Helvetica, Arial, sans-serif; }
+    .ink0 { fill: var(--ink-0); }
+    .ink1 { fill: var(--ink-1); }
+    .ink2 { fill: var(--ink-2); }
+    .t-sec { font-size: 30px; font-weight: 700; letter-spacing: -0.4px; }
+    .t-meta { font-size: 13px; font-weight: 500; letter-spacing: 0.2px; }
+    .t-name { font-size: 22px; font-weight: 650; letter-spacing: -0.2px; }
+    .t-desc { font-size: 16px; font-weight: 400; letter-spacing: 0; }
+    .t-lang { font-size: 13px; font-weight: 500; letter-spacing: 0.1px; }
+    .t-arrow { font-size: 15px; font-weight: 500; }
+
+    /* ---------- 玻璃面 / 描边 / 分隔 ---------- */
+    .glass { fill: var(--glass-fill); stroke: var(--glass-stroke); stroke-width: 1; }
+    .hair { stroke: var(--glass-stroke); stroke-width: 1; opacity: 0.55; }
+    .disp-a { fill: none; stroke: var(--accent-a); stroke-opacity: 0.28; stroke-width: 1; }
+    .disp-c { fill: none; stroke: var(--accent-c); stroke-opacity: 0.22; stroke-width: 1; }
+
+    /* ---------- 图标：stroke 走主题色，圆点是实心 currentColor ---------- */
+    .ic { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ic-a { stroke: var(--accent-a); color: var(--accent-a); }
+    .ic-b { stroke: var(--accent-b); color: var(--accent-b); }
+    .ic-c { stroke: var(--accent-c); color: var(--accent-c); }
+    .ic-d { stroke: var(--accent-d); color: var(--accent-d); }
+
+    /* ---------- 语言圆点（GitHub 语言色，品牌语义色，不进 token） ---------- */
+    .dot-ts { fill: #3178C6; }
+    .dot-py { fill: #3572A5; }
+
+    /* ---------- 双主题层的显隐（渐变必须换色时用这个，见 DESIGN §5） ---------- */
+    .only-dark { display: inline; }
+    .only-light { display: none; }
+
+    /* ---------- 动效 ----------
+       注意：基准样式必须 opacity:1（静态渲染 / 不支持动画的环境下四卡要可见），
+       入场由 animation + fill-mode:both 的 backwards 填充负责「先隐藏再入场」。 */
+    .enter { animation: proj-enter 0.9s cubic-bezier(.22,1,.36,1) both; }
+    .e1 { animation-delay: 0.1s; }
+    .e2 { animation-delay: 0.2s; }
+    .e3 { animation-delay: 0.3s; }
+    .e4 { animation-delay: 0.4s; }
+    .glow { animation: proj-drift 20s ease-in-out infinite alternate; }
+    .g1 { animation-delay: -2s; }
+    .g2 { animation-delay: -7s; }
+    .g3 { animation-delay: -11s; }
+    .g4 { animation-delay: -15s; }
+
+    @keyframes proj-enter {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes proj-drift {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(14px, -10px); }
+    }
+
+    /* ---------- 亮色覆盖：卡片投影更轻、光斑换深一档的强调色、分隔线略提亮 ---------- */
+    @media (prefers-color-scheme: light) {
+      .only-dark { display: none; }
+      .only-light { display: inline; }
+      .glass { filter: url(#proj-shadow-light); }
+      .hair { opacity: 0.85; }
+      .g1 { fill: url(#proj-glow-a-l); }
+      .g2 { fill: url(#proj-glow-b-l); }
+      .g3 { fill: url(#proj-glow-c-l); }
+      .g4 { fill: url(#proj-glow-d-l); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .enter { opacity: 1 !important; transform: none !important; }
+      .glow { transform: none !important; }
+    }
+  </style>
+
+  <defs>
+    <!-- 画布背景 -->
+    <linearGradient id="proj-bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05060A"/>
+      <stop offset="1" stop-color="#0B101C"/>
+    </linearGradient>
+    <linearGradient id="proj-bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2F5FA"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+
+    <!-- 区块标题左侧渐变竖条 -->
+    <linearGradient id="proj-bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+
+    <!-- ① 投影（暗色主用；亮色由 .glass 的 CSS filter 覆盖成 proj-shadow-light） -->
+    <filter id="proj-shadow-dark" x="-20%" y="-45%" width="140%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000000" flood-opacity="0.38"/>
+    </filter>
+    <filter id="proj-shadow-light" x="-20%" y="-45%" width="140%" height="200%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#0B1220" flood-opacity="0.14"/>
+    </filter>
+
+    <!-- ③ 顶部高光：横向白渐变细线 -->
+    <linearGradient id="proj-hl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.06" stop-color="#FFFFFF" stop-opacity="0.40"/>
+      <stop offset="0.30" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="0.62" stop-color="#FFFFFF" stop-opacity="0.26"/>
+      <stop offset="0.92" stop-color="#FFFFFF" stop-opacity="0.03"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- ④ 内部柔光（仅暗色可见） -->
+    <radialGradient id="proj-inner">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 图标底块：各卡主题色 20% 左右的斜向渐变 -->
+    <linearGradient id="proj-icon-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7DD3FC" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="proj-icon-b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="proj-icon-c" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F0ABFC" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#F0ABFC" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="proj-icon-d" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5EEAD4" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#5EEAD4" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <!-- ⑥ 角落光斑（暗色）：冰蓝 / 紫 / 粉 / 青绿 -->
+    <radialGradient id="proj-glow-a">
+      <stop offset="0" stop-color="#7DD3FC" stop-opacity="0.18"/>
+      <stop offset="0.55" stop-color="#7DD3FC" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-b">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity="0.16"/>
+      <stop offset="0.55" stop-color="#A78BFA" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-c">
+      <stop offset="0" stop-color="#F0ABFC" stop-opacity="0.15"/>
+      <stop offset="0.55" stop-color="#F0ABFC" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#F0ABFC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-d">
+      <stop offset="0" stop-color="#5EEAD4" stop-opacity="0.13"/>
+      <stop offset="0.55" stop-color="#5EEAD4" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#5EEAD4" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ⑥ 角落光斑（亮色）：同色相、深一档、强度更低 -->
+    <radialGradient id="proj-glow-a-l">
+      <stop offset="0" stop-color="#0EA5E9" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-b-l">
+      <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-c-l">
+      <stop offset="0" stop-color="#D946EF" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#D946EF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proj-glow-d-l">
+      <stop offset="0" stop-color="#14B8A6" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 卡片裁切（四张各自独立，避免柔光/光斑溢出到相邻卡） -->
+    <clipPath id="proj-clip-1"><rect x="40" y="62" width="548" height="180" rx="26"/></clipPath>
+    <clipPath id="proj-clip-2"><rect x="612" y="62" width="548" height="180" rx="26"/></clipPath>
+    <clipPath id="proj-clip-3"><rect x="40" y="264" width="548" height="180" rx="26"/></clipPath>
+    <clipPath id="proj-clip-4"><rect x="612" y="264" width="548" height="180" rx="26"/></clipPath>
+  </defs>
+
+  <!-- 画布背景：暗/亮各一套渐变，用 display 切换 -->
+  <rect class="only-dark" width="1200" height="470" fill="url(#proj-bg-dark)"/>
+  <rect class="only-light" width="1200" height="470" fill="url(#proj-bg-light)"/>
+
+  <!-- 区块标题 -->
+  <rect x="40" y="21" width="3" height="22" rx="1.5" fill="url(#proj-bar)"/>
+  <text class="t-sec ink0" x="58" y="43">SELECTED WORK</text>
+  <text class="t-meta ink2" x="1160" y="43" text-anchor="end">4 repositories →</text>
+
+  <!-- ══════════ 卡片 1 · campus-auth ══════════ -->
+  <g class="enter e1">
+    <rect class="glass" x="40" y="62" width="548" height="180" rx="26" filter="url(#proj-shadow-dark)"/>
+    <g clip-path="url(#proj-clip-1)">
+      <circle class="glow g1" cx="545" cy="86" r="205" fill="url(#proj-glow-a)"/>
+      <circle class="only-dark" cx="190" cy="106" r="200" fill="url(#proj-inner)"/>
+      <rect class="disp-a" x="39.1" y="61.1" width="548" height="180" rx="26"/>
+      <rect class="disp-c" x="40.9" y="62.9" width="548" height="180" rx="26"/>
+      <rect x="40" y="62.4" width="548" height="1.2" fill="url(#proj-hl)"/>
+    </g>
+    <g transform="translate(66 88)">
+      <rect width="30" height="30" rx="9" fill="url(#proj-icon-a)"/>
+      <g class="ic ic-a">
+        <path d="M8.6 11.2 L12.6 15 L8.6 18.8"/>
+        <path d="M15.6 19 H21.4"/>
+      </g>
+    </g>
+    <text class="t-name ink0" x="110" y="111">campus-auth</text>
+    <text class="t-desc ink1" x="66" y="153">校园网认证一键登录，桌面端零配置接入</text>
+    <line class="hair" x1="66" y1="177" x2="562" y2="177"/>
+    <circle class="dot-ts" cx="69.5" cy="204" r="3.5"/>
+    <text class="t-lang ink2" x="78" y="208">TypeScript</text>
+    <text class="t-arrow ink2" x="562" y="208" text-anchor="end">→</text>
+  </g>
+
+  <!-- ══════════ 卡片 2 · cdtu-campus-network ══════════ -->
+  <g class="enter e2">
+    <rect class="glass" x="612" y="62" width="548" height="180" rx="26" filter="url(#proj-shadow-dark)"/>
+    <g clip-path="url(#proj-clip-2)">
+      <circle class="glow g2" cx="1117" cy="86" r="205" fill="url(#proj-glow-b)"/>
+      <circle class="only-dark" cx="762" cy="106" r="200" fill="url(#proj-inner)"/>
+      <rect class="disp-a" x="611.1" y="61.1" width="548" height="180" rx="26"/>
+      <rect class="disp-c" x="612.9" y="62.9" width="548" height="180" rx="26"/>
+      <rect x="612" y="62.4" width="548" height="1.2" fill="url(#proj-hl)"/>
+    </g>
+    <g transform="translate(638 88)">
+      <rect width="30" height="30" rx="9" fill="url(#proj-icon-b)"/>
+      <g class="ic ic-b">
+        <path d="M15 8.8 L8.6 21.4 M8.6 21.4 L21.4 21.4 M21.4 21.4 L15 8.8"/>
+        <circle cx="15" cy="8.8" r="1.9" fill="currentColor" stroke="none"/>
+        <circle cx="8.6" cy="21.4" r="1.9" fill="currentColor" stroke="none"/>
+        <circle cx="21.4" cy="21.4" r="1.9" fill="currentColor" stroke="none"/>
+      </g>
+    </g>
+    <text class="t-name ink0" x="682" y="111">cdtu-campus-network</text>
+    <text class="t-desc ink1" x="638" y="153">校园网协议逆向与自动化实现的完整记录</text>
+    <line class="hair" x1="638" y1="177" x2="1134" y2="177"/>
+    <circle class="dot-py" cx="641.5" cy="204" r="3.5"/>
+    <text class="t-lang ink2" x="650" y="208">Python</text>
+    <text class="t-arrow ink2" x="1134" y="208" text-anchor="end">→</text>
+  </g>
+
+  <!-- ══════════ 卡片 3 · wechat-stats ══════════ -->
+  <g class="enter e3">
+    <rect class="glass" x="40" y="264" width="548" height="180" rx="26" filter="url(#proj-shadow-dark)"/>
+    <g clip-path="url(#proj-clip-3)">
+      <circle class="glow g3" cx="545" cy="288" r="205" fill="url(#proj-glow-c)"/>
+      <circle class="only-dark" cx="190" cy="308" r="200" fill="url(#proj-inner)"/>
+      <rect class="disp-a" x="39.1" y="263.1" width="548" height="180" rx="26"/>
+      <rect class="disp-c" x="40.9" y="264.9" width="548" height="180" rx="26"/>
+      <rect x="40" y="264.4" width="548" height="1.2" fill="url(#proj-hl)"/>
+    </g>
+    <g transform="translate(66 290)">
+      <rect width="30" height="30" rx="9" fill="url(#proj-icon-c)"/>
+      <g class="ic ic-c">
+        <path d="M10.5 21.2 V16.1"/>
+        <path d="M15 21.2 V12.4"/>
+        <path d="M19.5 21.2 V8.9"/>
+      </g>
+    </g>
+    <text class="t-name ink0" x="110" y="313">wechat-stats</text>
+    <text class="t-desc ink1" x="66" y="355">公众号数据抓取与可视化整理</text>
+    <line class="hair" x1="66" y1="379" x2="562" y2="379"/>
+    <circle class="dot-py" cx="69.5" cy="406" r="3.5"/>
+    <text class="t-lang ink2" x="78" y="410">Python</text>
+    <text class="t-arrow ink2" x="562" y="410" text-anchor="end">→</text>
+  </g>
+
+  <!-- ══════════ 卡片 4 · deepseek-harness ══════════ -->
+  <g class="enter e4">
+    <rect class="glass" x="612" y="264" width="548" height="180" rx="26" filter="url(#proj-shadow-dark)"/>
+    <g clip-path="url(#proj-clip-4)">
+      <circle class="glow g4" cx="1117" cy="288" r="205" fill="url(#proj-glow-d)"/>
+      <circle class="only-dark" cx="762" cy="308" r="200" fill="url(#proj-inner)"/>
+      <rect class="disp-a" x="611.1" y="263.1" width="548" height="180" rx="26"/>
+      <rect class="disp-c" x="612.9" y="264.9" width="548" height="180" rx="26"/>
+      <rect x="612" y="264.4" width="548" height="1.2" fill="url(#proj-hl)"/>
+    </g>
+    <g transform="translate(638 290)">
+      <rect width="30" height="30" rx="9" fill="url(#proj-icon-d)"/>
+      <g class="ic ic-d">
+        <circle cx="15" cy="15" r="5.3"/>
+        <circle cx="15" cy="15" r="1.7"/>
+        <path d="M21.1 15 H22.9"/>
+        <path d="M18.05 20.28 L18.95 21.84"/>
+        <path d="M11.95 20.28 L11.05 21.84"/>
+        <path d="M8.9 15 H7.1"/>
+        <path d="M11.95 9.72 L11.05 8.16"/>
+        <path d="M18.05 9.72 L18.95 8.16"/>
+      </g>
+    </g>
+    <text class="t-name ink0" x="682" y="313">deepseek-harness</text>
+    <text class="t-desc ink1" x="638" y="355">围绕 DeepSeek Harness 的本地增强实验</text>
+    <line class="hair" x1="638" y1="379" x2="1134" y2="379"/>
+    <circle class="dot-ts" cx="641.5" cy="406" r="3.5"/>
+    <text class="t-lang ink2" x="650" y="410">TypeScript</text>
+    <text class="t-arrow ink2" x="1134" y="410" text-anchor="end">→</text>
+  </g>
+</svg>

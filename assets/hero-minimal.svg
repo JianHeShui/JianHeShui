@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="JianHeShui — 见到我请去喝口水">
+  <title>JianHeShui — 见到我请去喝口水</title>
+
+  <!--
+    hero-minimal.svg · 极简封面：背景光晕 + 大字标题 + 右侧中文小字。
+    完整版封面见同目录 hero.svg（含状态 chips / tagline / 项目行 / 徽标圆）。
+    规格：viewBox 0 0 1200 320 / 双主题 / 零外部依赖
+    排版：大字 + 小字作为一个整体水平居中（大字 520 宽 + 间距 24 + 小字约 183 宽 = 727，左起 237）。
+  -->
+
+  <style>
+    svg {
+      --ink-0:#F7F9FC;
+      --ink-1:#9FB0C7;
+      --glow-op:0.44;
+    }
+    @media (prefers-color-scheme: light) {
+      svg {
+        --ink-0:#0B1220;
+        --ink-1:#54617A;
+        --glow-op:0.22;
+      }
+    }
+
+    .ink0 { fill: var(--ink-0); }
+    .ink1 { fill: var(--ink-1); }
+    .glow-layer { opacity: var(--glow-op); }
+
+    .only-dark  { display: inline; }
+    .only-light { display: none; }
+    @media (prefers-color-scheme: light) {
+      .only-dark  { display: none; }
+      .only-light { display: inline; }
+    }
+
+    .name {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 96px;
+      font-weight: 800;
+      letter-spacing: -2.5px;
+    }
+    .cn {
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 1.2px;
+    }
+
+    @keyframes hero-min-drift {
+      from { transform: translate(0px, 0px); }
+      to   { transform: translate(16px, -10px); }
+    }
+    .drift { animation: hero-min-drift 24s ease-in-out infinite alternate; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="min-bgD" x1="0" y1="0" x2="0.85" y2="1">
+      <stop offset="0"    stop-color="#0B1017"/>
+      <stop offset="0.52" stop-color="#0D1117"/>
+      <stop offset="1"    stop-color="#10151F"/>
+    </linearGradient>
+    <linearGradient id="min-bgL" x1="0" y1="0" x2="0.85" y2="1">
+      <stop offset="0"    stop-color="#F7F9FC"/>
+      <stop offset="0.52" stop-color="#FFFFFF"/>
+      <stop offset="1"    stop-color="#F2F5FA"/>
+    </linearGradient>
+
+    <radialGradient id="min-blueD">
+      <stop offset="0"    stop-color="#7DD3FC" stop-opacity="0.92"/>
+      <stop offset="0.40" stop-color="#7DD3FC" stop-opacity="0.34"/>
+      <stop offset="1"    stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="min-purpleD">
+      <stop offset="0"    stop-color="#A78BFA" stop-opacity="0.90"/>
+      <stop offset="0.40" stop-color="#A78BFA" stop-opacity="0.30"/>
+      <stop offset="1"    stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="min-pinkD">
+      <stop offset="0"    stop-color="#F0ABFC" stop-opacity="0.82"/>
+      <stop offset="0.40" stop-color="#F0ABFC" stop-opacity="0.24"/>
+      <stop offset="1"    stop-color="#F0ABFC" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="min-blueL">
+      <stop offset="0"    stop-color="#0EA5E9" stop-opacity="0.80"/>
+      <stop offset="0.40" stop-color="#0EA5E9" stop-opacity="0.26"/>
+      <stop offset="1"    stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="min-purpleL">
+      <stop offset="0"    stop-color="#8B5CF6" stop-opacity="0.78"/>
+      <stop offset="0.40" stop-color="#8B5CF6" stop-opacity="0.22"/>
+      <stop offset="1"    stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="min-pinkL">
+      <stop offset="0"    stop-color="#D946EF" stop-opacity="0.70"/>
+      <stop offset="0.40" stop-color="#D946EF" stop-opacity="0.18"/>
+      <stop offset="1"    stop-color="#D946EF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect class="only-dark"  x="0" y="0" width="1200" height="320" fill="url(#min-bgD)"/>
+  <rect class="only-light" x="0" y="0" width="1200" height="320" fill="url(#min-bgL)"/>
+
+  <!-- 背景光晕（缓慢漂移） -->
+  <g class="glow-layer drift">
+    <g class="only-dark">
+      <circle cx="210" cy="80"  r="380" fill="url(#min-blueD)"/>
+      <circle cx="1010" cy="270" r="370" fill="url(#min-purpleD)"/>
+      <circle cx="820"  cy="20"  r="250" fill="url(#min-pinkD)"/>
+    </g>
+    <g class="only-light">
+      <circle cx="210" cy="80"  r="380" fill="url(#min-blueL)"/>
+      <circle cx="1010" cy="270" r="370" fill="url(#min-purpleL)"/>
+      <circle cx="820"  cy="20"  r="250" fill="url(#min-pinkL)"/>
+    </g>
+  </g>
+
+  <!-- 大字标题 + 右侧中文小字（小字与大字同一基线：对齐大字下方水平线） -->
+  <text class="name ink0" x="237" y="200" textLength="520" lengthAdjust="spacing">JianHeShui</text>
+  <text class="cn ink1" x="781" y="200">见到我请去喝口水</text>
+</svg>

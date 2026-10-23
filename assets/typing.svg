@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="110" viewBox="0 0 1200 110" role="img" aria-label="JianHeShui — a live typewriter line: building campus network tooling">
+  <title>JianHeShui — now building</title>
+  <style>
+    svg {
+      --bg-0:#05060A; --bg-1:#0B101C;
+      --glass-fill:rgba(255,255,255,0.055); --glass-fill-2:rgba(255,255,255,0.085);
+      --glass-stroke:rgba(255,255,255,0.16); --glass-hl:rgba(255,255,255,0.55);
+      --ink-0:#F7F9FC; --ink-1:#A8B4C8; --ink-2:#6B7A91;
+      --accent-a:#7DD3FC; --accent-b:#A78BFA; --accent-c:#F0ABFC;
+      --glow-op:0.20;
+    }
+    @media (prefers-color-scheme: light) {
+      svg {
+        --bg-0:#F2F5FA; --bg-1:#FFFFFF;
+        --glass-fill:rgba(255,255,255,0.62); --glass-fill-2:rgba(255,255,255,0.82);
+        --glass-stroke:rgba(15,23,42,0.10); --glass-hl:rgba(255,255,255,0.95);
+        --ink-0:#0B1220; --ink-1:#46536B; --ink-2:#7A879C;
+        --accent-a:#0EA5E9; --accent-b:#8B5CF6; --accent-c:#D946EF;
+        --glow-op:0.13;
+      }
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    .ink0 { fill: var(--ink-0); }
+    .dot  { fill: var(--accent-a); }
+    .caret { fill: var(--accent-a); }
+
+    /* 呼吸状态点 3s */
+    @keyframes breathe {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 1; }
+    }
+    .breath { animation: breathe 3s ease-in-out infinite; }
+
+    /* 静态基准：第一行始终可见（无动画环境下即为一张完整海报），二/三行由动画接管 */
+    .ln1 { opacity: 1; }
+    .ln2, .ln3 { opacity: 0; }
+
+    /* 单条 12s：0-2.2s 打字，2.2-3.4s 停留，3.4-3.8s 淡出，其余隐藏 */
+    @keyframes lineShow {
+      0%     { opacity: 1; }
+      28.4%  { opacity: 1; }
+      31.6%  { opacity: 0; }
+      100%   { opacity: 0; }
+    }
+    .ln1 { animation: lineShow 12s linear 0s infinite forwards; }
+    .ln2 { animation: lineShow 12s linear 4s infinite forwards; }
+    .ln3 { animation: lineShow 12s linear 8s infinite forwards; }
+
+    /* clip rect 宽度动画：steps 逐字揭示；无动画时保持属性满宽 → 完整显示 */
+    @keyframes reveal1 {
+      0%     { width: 0px; }
+      18.33% { width: 492px; }
+      100%   { width: 492px; }
+    }
+    @keyframes reveal2 {
+      0%     { width: 0px; }
+      18.33% { width: 492px; }
+      100%   { width: 492px; }
+    }
+    @keyframes reveal3 {
+      0%     { width: 0px; }
+      18.33% { width: 552px; }
+      100%   { width: 552px; }
+    }
+    .rv1 { animation: reveal1 12s steps(33, end) 0s infinite forwards; }
+    .rv2 { animation: reveal2 12s steps(33, end) 4s infinite forwards; }
+    .rv3 { animation: reveal3 12s steps(37, end) 8s infinite forwards; }
+
+    /* 光标随揭示进度平移（steps 与字符数一致，逐字跳） */
+    @keyframes caretMove1 {
+      0%     { transform: translateX(0); }
+      18.33% { transform: translateX(496px); }
+      100%   { transform: translateX(496px); }
+    }
+    @keyframes caretMove2 {
+      0%     { transform: translateX(0); }
+      18.33% { transform: translateX(496px); }
+      100%   { transform: translateX(496px); }
+    }
+    @keyframes caretMove3 {
+      0%     { transform: translateX(0); }
+      18.33% { transform: translateX(556px); }
+      100%   { transform: translateX(556px); }
+    }
+    @keyframes blink {
+      0%   { opacity: 1; }
+      50%  { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .caret1 { animation: caretMove1 12s steps(33, end) 0s infinite forwards, blink 1s steps(1, end) 0s infinite; }
+    .caret2 { animation: caretMove2 12s steps(33, end) 4s infinite forwards, blink 1s steps(1, end) 0s infinite; }
+    .caret3 { animation: caretMove3 12s steps(37, end) 8s infinite forwards, blink 1s steps(1, end) 0s infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .ln2, .ln3, .caret2, .caret3 { display: none; }
+      .caret1 { transform: translateX(496px); }
+    }
+  </style>
+
+  <defs>
+    <radialGradient id="typing-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7DD3FC" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#7DD3FC" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="typing-edge" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="0.03" stop-color="#FFFFFF"/>
+      <stop offset="0.97" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <mask id="typing-edges" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="110">
+      <rect x="0" y="0" width="1200" height="110" fill="url(#typing-edge)"/>
+    </mask>
+
+    <clipPath id="typing-c1"><rect class="rv1" x="78" y="30" width="492" height="52"/></clipPath>
+    <clipPath id="typing-c2"><rect class="rv2" x="78" y="30" width="492" height="52"/></clipPath>
+    <clipPath id="typing-c3"><rect class="rv3" x="78" y="30" width="552" height="52"/></clipPath>
+  </defs>
+
+  <g mask="url(#typing-edges)">
+    <circle class="breath" cx="48" cy="55" r="16" fill="url(#typing-halo)"/>
+    <circle class="dot breath" cx="48" cy="55" r="4"/>
+
+    <g class="ln1">
+      <text class="mono ink0" x="78" y="64" textLength="492" lengthAdjust="spacing" clip-path="url(#typing-c1)">&gt; building campus network tooling</text>
+      <rect class="caret caret1" x="78" y="44" width="2" height="26" rx="1"/>
+    </g>
+
+    <g class="ln2">
+      <text class="mono ink0" x="78" y="64" textLength="492" lengthAdjust="spacing" clip-path="url(#typing-c2)">&gt; shipping small, sharp dev tools</text>
+      <rect class="caret caret2" x="78" y="44" width="2" height="26" rx="1"/>
+    </g>
+
+    <g class="ln3">
+      <text class="mono ink0" x="78" y="64" textLength="552" lengthAdjust="spacing" clip-path="url(#typing-c3)">&gt; currently exploring liquid-glass UI</text>
+      <rect class="caret caret3" x="78" y="44" width="2" height="26" rx="1"/>
+    </g>
+  </g>
+</svg>

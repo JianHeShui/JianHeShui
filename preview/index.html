@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>主页预览 · JianHeShui</title>
+<style>
+  /* 近似 GitHub README 的排版环境，用于在本地判断「push 后长什么样」 */
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2328;
+    --fg-muted: #59636e;
+    --link: #0969da;
+    --border: #d1d9e0;
+    --toolbar-bg: rgba(255, 255, 255, 0.88);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --fg: #e6edf3;
+      --fg-muted: #9198a1;
+      --link: #4493f8;
+      --border: #3d444d;
+      --toolbar-bg: rgba(13, 17, 23, 0.88);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 顶部工具条 —— 只在本地预览出现，不属于主页 */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--fg-muted);
+    background: var(--toolbar-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+  }
+  .toolbar .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #2ea043;
+    box-shadow: 0 0 0 3px rgba(46, 160, 67, 0.18);
+    flex: 0 0 auto;
+  }
+  .toolbar b { color: var(--fg); font-weight: 600; }
+  .toolbar .sep { opacity: 0.4; }
+  .toolbar kbd {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    color: var(--fg);
+  }
+
+  /* 模拟 GitHub 的 README 容器 */
+  .markdown-body {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 24px 72px;
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .markdown-body > :first-child { margin-top: 0 !important; }
+  .markdown-body p { margin: 0 0 16px; }
+  .markdown-body ul { margin: 0 0 16px; padding-left: 2em; }
+  .markdown-body li { margin: 0.25em 0; }
+  .markdown-body li + li { margin-top: 4px; }
+  .markdown-body a { color: var(--link); text-decoration: none; }
+  .markdown-body a:hover { text-decoration: underline; }
+  .markdown-body b, .markdown-body strong { font-weight: 600; }
+  .markdown-body br { display: block; content: ""; margin-top: 8px; }
+
+  /* 关键：与 GitHub 一致地把 SVG 当作块级 100% 宽图片 */
+  .markdown-body img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    border-style: none;
+    margin: 0;
+  }
+  .markdown-body > img { margin: 16px 0; }
+  .markdown-body > div[align="center"] > img { width: 100%; }
+  .markdown-body > div[align="center"] { margin: 0 0 16px; }
+
+  .markdown-body [align="center"] { text-align: center; }
+  .markdown-body p[align="center"] { margin: 28px 0 8px; }
+
+  /* 页脚提示 */
+  .foot-note {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--fg-muted);
+  }
+  .foot-note code {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: rgba(129, 139, 152, 0.16);
+  }
+  @media (max-width: 720px) {
+    .markdown-body { padding: 20px 14px 48px; }
+    .foot-note { padding: 0 14px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="dot"></span>
+  <span><b>本地预览</b> · 与 <code>README.md</code> 同构</span>
+  <span class="sep">|</span>
+  <span>主题跟随系统偏好，想对比暗/亮请切换系统深色模式</span>
+  <span class="sep">|</span>
+  <span>Win11：设置 → 个性化 → 颜色</span>
+</div>
+
+<!-- ↓↓↓ 以下内容与 README.md 逐块一一对应，改 README 时请同步 ↓↓↓ -->
+<div class="markdown-body">
+
+  <img src="../assets/hero-minimal.svg" width="100%" alt="JianHeShui" />
+
+</div>
+<!-- ↑↑↑ 以上为预览内容 ↑↑↑ -->
+
+<div class="foot-note">
+  提示：这是本地镜像页，不参与发布。真实主页由 GitHub 渲染 <code>README.md</code>，
+  字体与间距会与这里几乎一致；唯独图片会经 <code>camo.githubusercontent.com</code> 代理加载，
+  首次加载略慢属正常。<br />
+  想调文案改 <code>README.md</code>，想调视觉改 <code>assets/*.svg</code>，两者改完刷新本页即可看效果。
+</div>
+
+</body>
+</html>

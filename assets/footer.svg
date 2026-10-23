@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="96" viewBox="0 0 1200 96" role="img" aria-label="Footer — links to GitHub, Email and Blog, signed JianHeShui">
+  <title>JianHeShui — footer</title>
+  <style>
+    svg {
+      --bg-0:#05060A; --bg-1:#0B101C;
+      --glass-fill:rgba(255,255,255,0.055); --glass-fill-2:rgba(255,255,255,0.085);
+      --glass-stroke:rgba(255,255,255,0.16); --glass-hl:rgba(255,255,255,0.55);
+      --ink-0:#F7F9FC; --ink-1:#A8B4C8; --ink-2:#6B7A91;
+      --accent-a:#7DD3FC; --accent-b:#A78BFA; --accent-c:#F0ABFC;
+      --glow-op:0.20;
+    }
+    @media (prefers-color-scheme: light) {
+      svg {
+        --bg-0:#F2F5FA; --bg-1:#FFFFFF;
+        --glass-fill:rgba(255,255,255,0.62); --glass-fill-2:rgba(255,255,255,0.82);
+        --glass-stroke:rgba(15,23,42,0.10); --glass-hl:rgba(255,255,255,0.95);
+        --ink-0:#0B1220; --ink-1:#46536B; --ink-2:#7A879C;
+        --accent-a:#0EA5E9; --accent-b:#8B5CF6; --accent-c:#D946EF;
+        --glow-op:0.13;
+      }
+    }
+
+    .ink0 { fill: var(--ink-0); }
+    .ink1 { fill: var(--ink-1); }
+    .ink2 { fill: var(--ink-2); }
+    .pill { fill: var(--glass-fill-2); stroke: var(--glass-stroke); stroke-width: 1; }
+    .ico-s { fill: none; stroke: var(--ink-1); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+
+    .btn-t {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px; font-weight: 500; letter-spacing: 0.1px;
+    }
+    .fine {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.2px;
+    }
+
+    .only-dark { display: inline; }
+    .only-light { display: none; }
+    @media (prefers-color-scheme: light) {
+      .only-dark { display: none; }
+      .only-light { display: inline; }
+    }
+
+    /* 入场只做位移，不做透明度：静态渲染（无动画）下内容始终完整可见 */
+    @keyframes footIn {
+      from { transform: translateY(6px); }
+      to   { transform: translateY(0); }
+    }
+    .foot { animation: footIn 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="footer-rule-dark" x1="240" y1="0" x2="960" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="footer-rule-light" x1="240" y1="0" x2="960" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F172A" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#0F172A" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0F172A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <g class="foot">
+    <!-- GitHub -->
+    <rect class="pill" x="445" y="20" width="104" height="36" rx="18"/>
+    <g class="ico-s" transform="translate(461,31)">
+      <circle cx="3.5" cy="3.5" r="1.7"/>
+      <circle cx="3.5" cy="10.5" r="1.7"/>
+      <circle cx="10.5" cy="10.5" r="1.7"/>
+      <path d="M3.5 5.2 V8.8"/>
+      <path d="M5.2 3.5 H8.8 a1.7 1.7 0 0 1 1.7 1.7 V8.8"/>
+    </g>
+    <text class="btn-t ink0" x="484" y="43">GitHub</text>
+
+    <!-- Email -->
+    <rect class="pill" x="561" y="20" width="94" height="36" rx="18"/>
+    <g class="ico-s" transform="translate(577,31)">
+      <rect x="1" y="2.6" width="12" height="8.8" rx="1.8"/>
+      <path d="M1.9 4.2 L7 8 L12.1 4.2"/>
+    </g>
+    <text class="btn-t ink0" x="600" y="43">Email</text>
+
+    <!-- Blog -->
+    <rect class="pill" x="667" y="20" width="88" height="36" rx="18"/>
+    <g class="ico-s" transform="translate(683,31)">
+      <circle cx="7" cy="7" r="6"/>
+      <path d="M1 7 H13"/>
+      <ellipse cx="7" cy="7" rx="2.8" ry="6"/>
+    </g>
+    <text class="btn-t ink0" x="706" y="43">Blog</text>
+
+    <!-- 签名 -->
+    <text class="fine ink2" x="600" y="77" text-anchor="middle">JianHeShui · Built with markup, glass and stubbornness</text>
+
+    <!-- 收尾分隔线 -->
+    <rect class="only-dark" x="240" y="90" width="720" height="1" fill="url(#footer-rule-dark)"/>
+    <rect class="only-light" x="240" y="90" width="720" height="1" fill="url(#footer-rule-light)"/>
+  </g>
+</svg>
